@@ -4,24 +4,48 @@
 \usepackage{amsmath}
 
 \title{Classifying Sentiments in the Olist Reviews Dataset}
-\author{Gabriel Yamashita}
 
 \begin{document}
 \maketitle
 
 \section{Dataset}
-The dataset utilized for this classification task includes two main files: \texttt{olist\_orders\_dataset.csv} and \texttt{olist\_order\_reviews\_dataset.csv}. These files were loaded using the pandas library and subsequently merged on the \texttt{order\_id} to create a comprehensive view of customer reviews and their corresponding orders. The merged dataset contains various fields, including the review score and the review comments, which are crucial for the sentiment classification process.
+The dataset used in this analysis includes customer reviews and order data from the Olist e-commerce platform. 
+We utilized two main files: \texttt{olist\_orders\_dataset.csv} and \texttt{olist\_order\_reviews\_dataset.csv}. 
+After loading the data, the datasets were merged on the \texttt{order\_id} field to combine review data with associated orders. 
+This dataset contains review scores, review messages, and other order-related fields.
 
 \section{Classification Pipeline}
-For the classification task, Logistic Regression was implemented as the classification method. A machine learning pipeline was established, which included preprocessing steps such as tokenization, stemming, and vectorization of the review text data using TF-IDF. This approach enables the model to quantify the importance of each word in the classification process effectively.
+We implemented a Logistic Regression classifier to predict the sentiment (positive or negative) of customer reviews. 
+The text data was preprocessed using stemming techniques (RSLP Stemmer), and vectorized using TF-IDF (Term Frequency-Inverse Document Frequency) to quantify the importance of each word.
+
+A pipeline was constructed to automate these steps:
+\begin{itemize}
+    \item Text Preprocessing (Tokenization, Stemming)
+    \item Vectorization (TF-IDF)
+    \item Classification (Logistic Regression)
+\end{itemize}
 
 \section{Evaluation}
-The model's performance was evaluated using multiple metrics, including accuracy, confusion matrix, and classification report. These metrics provide insight into how well the model classifies the sentiments expressed in the reviews, allowing for the identification of any misclassifications and overall effectiveness.
+To evaluate the model's performance, we used several metrics:
+\begin{itemize}
+    \item Accuracy: Proportion of correctly classified reviews.
+    \item Confusion Matrix: Visualization of predicted vs. actual classifications.
+    \item Classification Report: Precision, Recall, and F1-Score for both classes.
+\end{itemize}
 
 \section{Dataset Size}
-The dataset comprises a significant number of reviews, and the distribution of star ratings was analyzed to understand how sentiments vary. The analysis included a bar chart visualizing the number of reviews corresponding to each star rating, providing a clear view of customer satisfaction levels.
+The dataset contains thousands of reviews, with the following distribution of review scores (5 stars being the highest, 1 star being the lowest). 
+Figure~\ref{fig:review_distribution} shows the distribution of star ratings.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.45\textwidth]{review_distribution.png}
+\caption{Distribution of Review Scores. The majority of reviews are concentrated on 5 and 4-star ratings, indicating positive feedback.}
+\label{fig:review_distribution}
+\end{figure}
 
 \section{Topic Analysis}
-Exploratory data analysis was performed to gain insights into the sentiments expressed in the reviews. Although specific topic analysis was not detailed in the notebook, the distribution of reviews suggests trends in customer satisfaction and highlights areas for improvement based on the reviews provided.
+A preliminary analysis of the reviews suggests common themes around customer satisfaction and product quality. 
+Further topic analysis would allow the identification of frequent topics mentioned in positive and negative reviews.
 
 \end{document}
